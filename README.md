@@ -78,6 +78,10 @@ The project aims to deliver a secure, maintainable, and production-oriented appl
 | Authentication | JWT |
 | API Documentation | OpenAPI |
 | Version Control | Git & GitHub |
+| Build Tool | Vite |
+| UI Components | shadcn/ui |
+| Containerization | Docker |
+| CI/CD | GitHub Actions |
 
 ## Project Structure
 
@@ -85,6 +89,7 @@ The project aims to deliver a secure, maintainable, and production-oriented appl
 mini-crm/
 ├── frontend/
 ├── backend/
+├── database/
 ├── docs/
 ├── tests/
 ├── .gitignore
@@ -95,6 +100,7 @@ mini-crm/
 |---|---|
 | frontend/ | React and TypeScript application |
 | backend/ | ASP.NET Core Web API application |
+| database/ | Database design, SQL scripts and seed data |
 | docs/ | Project requirements and technical documentation |
 | tests/ | Application and integration tests |
 
