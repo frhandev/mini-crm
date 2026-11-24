@@ -1,10 +1,11 @@
+import { Contact } from 'lucide-react';
+
 function App() {
   return (
-    <main>
+    <main className="flex min-h-screen flex-col items-center justify-center p-24">
+      <Contact />
       <h1>Mini CRM</h1>
-      <p>Customer & Quotation Management System</p>
-      <p>Frontend initialized successfully.</p>
-      <small>v0.1.0 · Development</small>
+      <p>UI Configuration Preview</p>
     </main>
   );
 }
