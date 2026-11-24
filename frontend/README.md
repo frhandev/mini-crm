@@ -31,15 +31,15 @@ The frontend is responsible for providing the user interface, handling user inte
 
 ## Available Scripts
 
-| Command | Description |
-|---|---|
-| `npm ci` | Install project dependencies |
-| `npm run dev` | Start the development server |
-| `npm run build` | Type-check and build the application |
-| `npm run preview` | Preview the production build |
-| `npm run lint` | Run ESLint checks |
-| `npm run format` | Format files using Prettier |
-| `npm run format:check` | Check code formatting |
+| Command                | Description                          |
+| ---------------------- | ------------------------------------ |
+| `npm ci`               | Install project dependencies         |
+| `npm run dev`          | Start the development server         |
+| `npm run build`        | Type-check and build the application |
+| `npm run preview`      | Preview the production build         |
+| `npm run lint`         | Run ESLint checks                    |
+| `npm run format`       | Format files using Prettier          |
+| `npm run format:check` | Check code formatting                |
 
 ## Documentation
 
