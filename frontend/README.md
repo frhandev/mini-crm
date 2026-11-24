@@ -17,11 +17,6 @@ The frontend is responsible for providing the user interface, handling user inte
 - ESLint
 - Prettier
 
-## Planned Technologies
-
-- Tailwind CSS
-- shadcn/ui
-
 ## Planned Features
 
 - Authentication and authorization
