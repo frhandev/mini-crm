@@ -11,13 +11,11 @@ The frontend is responsible for providing the user interface, handling user inte
 - React
 - TypeScript
 - Vite
+- Tailwind CSS v4
+- shadcn/ui (Radix UI)
+- Lucide React
 - ESLint
 - Prettier
-
-## Planned Technologies
-
-- Tailwind CSS
-- shadcn/ui
 
 ## Planned Features
 

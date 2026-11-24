@@ -19,4 +19,18 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
+
+  // Allow shadcn/ui variant exports
+  {
+    files: ['src/components/ui/button.tsx', 'src/components/ui/badge.tsx'],
+    rules: {
+      'react-refresh/only-export-components': [
+        'error',
+        {
+          allowConstantExport: true,
+          allowExportNames: ['buttonVariants', 'badgeVariants'],
+        },
+      ],
+    },
+  },
 ]);
