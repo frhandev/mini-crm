@@ -129,3 +129,85 @@ mini-crm/
 **Development Start Date:** November 24, 2026
 
 This project is under active development. Features, architecture, and documentation will be progressively updated throughout the development lifecycle.
+
+## Getting Started
+
+The following instructions describe how to install and run the Mini CRM frontend locally.
+
+### Prerequisites
+
+Ensure that the following tools are installed:
+
+- Node.js (compatible with the project's Vite version)
+- npm
+- Git
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/frhandev/mini-crm.git
+cd mini-crm
+```
+
+Navigate to the frontend directory and install dependencies:
+
+```bash
+cd frontend
+npm ci
+```
+
+### Development
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open the application in your browser:
+
+http://localhost:5173
+
+### Production Build
+
+Create an optimized production build:
+
+```bash
+npm run build
+```
+
+The generated files will be available in the `frontend/dist/` directory.
+
+### Preview
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+### Linting
+
+Run ESLint to identify code quality issues:
+
+```bash
+npm run lint
+```
+
+### Formatting
+
+Format the source code using Prettier:
+
+```bash
+npm run format
+```
+
+### Formatting Check
+
+Check code formatting without modifying files:
+
+```bash
+npm run format:check
+```

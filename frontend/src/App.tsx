@@ -1,11 +1,11 @@
 function App() {
   return (
-    <>
-      <h1> Mini CRM</h1>
-      <h3>Customer and Quotation Management</h3>
-      <p>Frontend initialized successfully</p>
-      <p>v0.1.0 · Development</p>
-    </>
+    <main>
+      <h1>Mini CRM</h1>
+      <p>Customer & Quotation Management System</p>
+      <p>Frontend initialized successfully.</p>
+      <small>v0.1.0 · Development</small>
+    </main>
   );
 }
 

@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+build/
+**/dist/
+**/build/
+**/bin/
+**/obj/
+
+# Testing
+**/coverage/
+**/playwright-report/
+**/test-results/
+
+# Backend generated files
+**/Migrations/
+
+# Environment files
+**/.env
+**/.env.*
+!**/.env.example
+
+# Package manager lock files
+**/package-lock.json
+**/pnpm-lock.yaml
+**/yarn.lock
+
+# IDE and editor files
+.vs/
+.idea/
+
+# Generated files
+**/*.min.js
+**/*.min.css
+**/*.generated.ts
+
+# Logs
+**/*.log
+
+# Git
+.git/
