@@ -1,0 +1,36 @@
+# Frontend dependencies
+node_modules/
+
+# Frontend build output
+dist/
+dist-ssr/
+.vite/
+coverage/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Local IDE settings
+.idea/
+
+# .NET build outputs
+bin/
+obj/
+TestResults/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Certificates
+*.pfx
+*.p12
