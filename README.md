@@ -1,20 +1,20 @@
 # Mini CRM
 
-A full-stack CRM system for managing customers, sales quotations, and business analytics, developed as a software engineering internship project using React and ASP.NET Core.
+A full-stack Customer Relationship Management (CRM) application developed as part of a 20-working-day Full-Stack Software Development Internship.
 
 ## Project Overview
 
-Mini CRM is a web-based customer and qoutation mangement system designed for a small and medium-sized businesses.
+Mini CRM is a web-based customer and quotation management system designed for small and medium-sized businesses.
 
-The application enables users to manage customer information, create sales qoutations, track qoutation statuses, and monitor key business metrics through a centralized dashboard.
+The application enables users to manage customer information, create sales quotations, track quotation statuses, and monitor key business metrics through a centralized dashboard.
 
-The project aims to deliver a secure, maintainable, and production-oriented application using modern web developement technologies and software engineering practices.
+The project aims to deliver a secure, maintainable, and production-oriented application using modern web development technologies and software engineering practices.
 
 ## Project Objectives
 
 - Centralize customer information and management.
-- Simplify the sales qoutation management process.
-- Improve qoutation tracking and sales visibility.
+- Simplify the sales quotation management process.
+- Improve quotation tracking and sales visibility.
 - Develop a secure and maintainable full-stack application.
 - Implement RESTful API architecture and relational database modeling.
 - Apply professional software development practices.
