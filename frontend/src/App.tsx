@@ -62,13 +62,17 @@ function App() {
               </div>
 
               <div className="flex flex-wrap gap-2">
-                <Button type="submit" className="bg-slate-900 text-white">
+                <Button type="submit">
                   <Plus className="size-4" />
                   Create Customer
                 </Button>
 
                 <Button type="reset" variant="outline">
                   Cancel
+                </Button>
+
+                <Button type="button" disabled>
+                  Disabled
                 </Button>
               </div>
             </form>

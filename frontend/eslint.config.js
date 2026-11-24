@@ -22,10 +22,7 @@ export default defineConfig([
 
   // Allow shadcn/ui variant exports
   {
-    files: [
-      'src/components/ui/button.tsx',
-      'src/components/ui/badge.tsx',
-    ],
+    files: ['src/components/ui/button.tsx', 'src/components/ui/badge.tsx'],
     rules: {
       'react-refresh/only-export-components': [
         'error',
