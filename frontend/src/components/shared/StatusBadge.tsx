@@ -1,5 +1,6 @@
-import { statusLabels, type Status } from "@/types/quotation";
-import { Badge } from "../ui/badge";
+import { type Status } from '@/types/quotation';
+import { Badge } from '../ui/badge';
+import { statusLabels } from '@/lib/status-labels';
 
 export function StatusBadge({ status }: { status: Status | 'Active' | 'Archived' }) {
   return (

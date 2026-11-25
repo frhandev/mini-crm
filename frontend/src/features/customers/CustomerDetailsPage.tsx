@@ -11,8 +11,8 @@ import { type Quote } from '@/types/quotation';
 import { date } from '@/lib/formatters';
 import { Modal } from '@/components/shared/Modal';
 import { PreviewNotice } from '@/preview/PreviewNotice';
-import { QuoteTable } from '../quotations/components/QuotationTable';
 import { Tabs } from 'radix-ui';
+import { QuotationTable } from '../quotations/components/QuotationTable';
 
 export function CustomerDetail({
   customer: c,
@@ -78,7 +78,7 @@ export function CustomerDetail({
         </Tabs.Content>
         <Tabs.Content value="history">
           <Panel title="Teklif geçmişi">
-            {history.length ? <QuoteTable rows={history} customers={[c]} go={go} /> : <Empty />}
+            {history.length ? <QuotationTable rows={history} customers={[c]} go={go} /> : <Empty />}
           </Panel>
         </Tabs.Content>
       </Tabs.Root>

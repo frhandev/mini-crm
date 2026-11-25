@@ -1,5 +1,6 @@
 import { Panel } from '@/components/shared/Panel';
-import { statusLabels, type Quote, type Status } from '@/types/quotation';
+import { statusLabels } from '@/lib/status-labels';
+import { type Quote, type Status } from '@/types/quotation';
 
 export function QuotationStatusChart({ quotes }: { quotes: Quote[] }) {
   const rows = (Object.keys(statusLabels) as Status[]).map((status) => ({

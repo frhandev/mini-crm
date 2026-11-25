@@ -20,7 +20,7 @@ import { total } from '@/preview/calculations';
 import { QuotationStatusChart } from './components/QuotationStatusChart';
 import { QuotationTrendChart } from './components/QuotationTrendChart';
 import { Panel } from '@/components/shared/Panel';
-import { QuoteTable } from '../Records';
+import { QuotationTable } from '../quotations/components/QuotationTable';
 
 export function Dashboard({
   customers,
@@ -111,7 +111,7 @@ export function Dashboard({
               </button>
             }
           >
-            <QuoteTable rows={quotes.slice(0, 5)} customers={customers} go={go} />
+            <QuotationTable rows={quotes.slice(0, 5)} customers={customers} go={go} />
           </Panel>
           <Panel title="Son müşteri hareketleri">
             <ul className="activity-feed">

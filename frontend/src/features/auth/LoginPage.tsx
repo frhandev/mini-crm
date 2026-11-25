@@ -1,9 +1,9 @@
-import { Brand } from "@/components/shared/Brand";
-import { Field } from "@/components/shared/Field";
-import { Button } from "@/components/ui/button";
-import type { Go, Scenario } from "@/preview/types";
-import { EyeOff, Eye, ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { Brand } from '@/components/shared/Brand';
+import { Field } from '@/components/shared/Field';
+import { Button } from '@/components/ui/button';
+import type { Go, Scenario } from '@/preview/types';
+import { EyeOff, Eye, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
 
 export function Login({ go, scenario }: { go: Go; scenario: Scenario }) {
   const [visible, setVisible] = useState(false);
@@ -16,6 +16,11 @@ export function Login({ go, scenario }: { go: Go; scenario: Scenario }) {
         <form
           onSubmit={(e) => {
             e.preventDefault();
+
+            if (scenario === 'error' || scenario === 'invalid' || scenario === 'loading') {
+              return;
+            }
+
             go('dashboard');
           }}
         >

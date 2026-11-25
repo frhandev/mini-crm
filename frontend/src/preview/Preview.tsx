@@ -15,8 +15,9 @@ import { History } from '@/features/activity/ActivityPage';
 import { Dashboard } from '@/features/dashboard/DashboardPage';
 import { CustomerDetail } from '@/features/customers/CustomerDetailsPage';
 import { CustomerForm } from '@/features/customers/CustomerFormPage';
-import { QuotationsPage } from '@/features/quotations/QuotationsPage';
 import { CustomersPage } from '@/features/customers/CustomersPage';
+import { QuotationDetailsPage } from '@/features/quotations/QuotationDetailsPage';
+import { QuotationBuilderPage } from '@/features/quotations/QuotationBuilderPage';
 const labels: Record<Scenario, string> = {
   normal: 'Standart',
   empty: 'Boş',
@@ -51,6 +52,7 @@ export default function Preview() {
   };
   const blocked = !admin && ['users', 'settings', 'activity'].includes(page);
   const c = customers.find((c) => c.id === id) ?? customers[0];
+  const q = quotes.find((q) => q.id === id) ?? quotes[0];
 
   const reviewPanel = review && (
     <Modal title="Tasarım önizlemesi" close={() => setReview(false)}>
@@ -109,12 +111,25 @@ export default function Preview() {
       case 'customers':
         return <CustomersPage customers={scenario === 'empty' ? [] : customers} go={go} />;
 
-      case 'quotes':
+      case 'quote':
         return (
-          <QuotationsPage
-            customers={scenario === 'empty' ? [] : customers}
-            quotes={scenario === 'empty' ? [] : quotes}
+          <QuotationDetailsPage
+            quote={q}
+            customer={customers.find((c) => c.id === q.customerId)!}
             go={go}
+            scenario={scenario}
+          />
+        );
+
+      case 'editQuote':
+      case 'newQuote':
+        return (
+          <QuotationBuilderPage
+            quote={page === 'editQuote' && q.status === 'Draft' ? q : undefined}
+            customerId={page === 'newQuote' ? id : undefined}
+            customers={customers}
+            go={go}
+            scenario={scenario}
           />
         );
 

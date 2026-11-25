@@ -1,4 +1,4 @@
-import { Layers3 } from "lucide-react";
+import { Layers3 } from 'lucide-react';
 
 export function Brand() {
   return (
