@@ -17,9 +17,12 @@ import {
   UserRound,
   PanelsTopLeft,
 } from 'lucide-react';
-import { Brand, Modal } from '@/components/shared/Elements';
 import { Button } from '@/components/ui/button';
-import { pageNames, initials, type Go, type Member, type Page } from '@/lib/model';
+import { pageNames, type Go, type Page } from '@/preview/types';
+import { Brand } from '@/components/shared/Brand';
+import { Modal } from '@/components/shared/Modal';
+import type { Member } from '@/types/user';
+import { initials } from '@/lib/formatters';
 const primary = [
   { page: 'dashboard', icon: LayoutDashboard },
   { page: 'customers', icon: Contact },

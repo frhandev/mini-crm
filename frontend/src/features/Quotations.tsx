@@ -1,28 +1,19 @@
 import { useState } from 'react';
 import { Plus, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import {
-  Panel,
-  Table,
-  Header,
-  Field,
-  Modal,
-  StatusBadge,
-  PreviewNotice,
-  Empty,
-} from '@/components/shared/Elements';
-import {
-  date,
-  money,
-  total,
-  statusLabels,
-  type Customer,
-  type Quote,
-  type Go,
-  type Scenario,
-  type Status,
-  type Item,
-} from '@/lib/model';
+import type { Customer } from '@/types/customer';
+import type { Go, Scenario } from '@/preview/types';
+import { Header } from '@/components/shared/Header';
+import { Panel } from '@/components/shared/Panel';
+import { StatusBadge } from '@/components/shared/StatusBadge';
+import { Table } from '@/components/shared/Table';
+import { Empty } from '@/components/shared/Empty';
+import { PreviewNotice } from '@/preview/PreviewNotice';
+import { Modal } from '@/components/shared/Modal';
+import { Field } from '@/components/shared/Field';
+import { statusLabels, type Item, type Quote, type Status } from '@/types/quotation';
+import { date, money } from '@/lib/formatters';
+import { total } from '@/preview/calculations';
 export function QuoteDetail({
   quote: q,
   customer,

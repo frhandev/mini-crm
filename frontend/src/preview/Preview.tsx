@@ -1,14 +1,22 @@
 import { useState } from 'react';
 import { Shell } from '@/layouts/AppShell';
 import { customers, quotes, members, activities } from './fixtures';
-import { CustomerDetail, CustomerForm, Records } from '@/features/Records';
-import { Builder, QuoteDetail } from '@/features/Quotations';
-import { Dashboard } from '@/features/Dashboard';
-import { UserList, History, Settings, Profile } from '@/features/Administration';
-import { Login, SystemPage } from '@/features/Access';
-import { Modal, PreviewNotice, Header } from '@/components/shared/Elements';
+import { SystemPage } from '@/features/system/SystemPage';
 import { Button } from '@/components/ui/button';
-import { pageNames, type Page, type Go, type Scenario } from '@/lib/model';
+import { type Page, type Go, type Scenario, pageNames } from './types';
+import { Modal } from '@/components/shared/Modal';
+import { Header } from '@/components/shared/Header';
+import { PreviewNotice } from './PreviewNotice';
+import { Login } from '@/features/auth/LoginPage';
+import { UserList } from '@/features/users/UsersPage';
+import { Profile } from '@/features/profile/ProfilePage';
+import { Settings } from '@/features/settings/SettingsPage';
+import { History } from '@/features/activity/ActivityPage';
+import { Dashboard } from '@/features/dashboard/DashboardPage';
+import { CustomerDetail } from '@/features/customers/CustomerDetailsPage';
+import { CustomerForm } from '@/features/customers/CustomerFormPage';
+import { QuotationsPage } from '@/features/quotations/QuotationsPage';
+import { CustomersPage } from '@/features/customers/CustomersPage';
 const labels: Record<Scenario, string> = {
   normal: 'Standart',
   empty: 'Boş',
@@ -43,11 +51,7 @@ export default function Preview() {
   };
   const blocked = !admin && ['users', 'settings', 'activity'].includes(page);
   const c = customers.find((c) => c.id === id) ?? customers[0];
-  const q =
-    quotes.find((q) => q.id === id) ??
-    (page === 'editQuote'
-      ? quotes.find((q) => q.status === 'Draft' && q.items.length > 0)!
-      : quotes[0]);
+
   const reviewPanel = review && (
     <Modal title="Tasarım önizlemesi" close={() => setReview(false)}>
       <p>Örnek verilerle ekranları, rolleri ve durumları inceleyin.</p>
@@ -103,37 +107,27 @@ export default function Preview() {
           <Dashboard {...{ go, customers, quotes, activities }} empty={scenario === 'empty'} />
         );
       case 'customers':
+        return <CustomersPage customers={scenario === 'empty' ? [] : customers} go={go} />;
+
       case 'quotes':
         return (
-          <Records
-            kind={page}
-            go={go}
+          <QuotationsPage
             customers={scenario === 'empty' ? [] : customers}
             quotes={scenario === 'empty' ? [] : quotes}
+            go={go}
           />
         );
+
       case 'customer':
-        return <CustomerDetail customer={c} {...{ admin, go, quotes }} />;
+        return <CustomerDetail customer={c} admin={admin} go={go} quotes={quotes} />;
+
       case 'editCustomer':
       case 'newCustomer':
         return (
-          <CustomerForm customer={page === 'editCustomer' ? c : undefined} {...{ go, scenario }} />
-        );
-      case 'quote':
-        return (
-          <QuoteDetail
-            quote={q}
-            customer={customers.find((c) => c.id === q.customerId)!}
-            {...{ go, scenario }}
-          />
-        );
-      case 'editQuote':
-      case 'newQuote':
-        return (
-          <Builder
-            quote={page === 'editQuote' && q.status === 'Draft' ? q : undefined}
-            customerId={page === 'newQuote' ? id : undefined}
-            {...{ customers, go, scenario }}
+          <CustomerForm
+            customer={page === 'editCustomer' ? c : undefined}
+            go={go}
+            scenario={scenario}
           />
         );
       case 'users':

@@ -1,4 +1,7 @@
-import type { Customer, Quote, Member, Activity, Status } from '@/lib/model';
+import type { Activity } from '@/types/activity';
+import type { Customer } from '@/types/customer';
+import type { Quote, Status } from '@/types/quotation';
+import type { Member } from '@/types/user';
 const uuid = (group: number, n: number) =>
   `00000000-0000-4000-8000-${String(group * 1000 + n).padStart(12, '0')}`;
 const firms = [
