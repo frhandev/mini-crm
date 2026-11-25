@@ -18,6 +18,7 @@ import { CustomerForm } from '@/features/customers/CustomerFormPage';
 import { CustomersPage } from '@/features/customers/CustomersPage';
 import { QuotationDetailsPage } from '@/features/quotations/QuotationDetailsPage';
 import { QuotationBuilderPage } from '@/features/quotations/QuotationBuilderPage';
+import { QuotationsPage } from '@/features/quotations/QuotationsPage';
 const labels: Record<Scenario, string> = {
   normal: 'Standart',
   empty: 'Boş',
@@ -52,7 +53,11 @@ export default function Preview() {
   };
   const blocked = !admin && ['users', 'settings', 'activity'].includes(page);
   const c = customers.find((c) => c.id === id) ?? customers[0];
-  const q = quotes.find((q) => q.id === id) ?? quotes[0];
+  const q =
+    quotes.find((q) => q.id === id) ??
+    (page === 'editQuote'
+      ? quotes.find((q) => q.status === 'Draft' && q.items.length > 0)!
+      : quotes[0]);
 
   const reviewPanel = review && (
     <Modal title="Tasarım önizlemesi" close={() => setReview(false)}>
@@ -110,6 +115,15 @@ export default function Preview() {
         );
       case 'customers':
         return <CustomersPage customers={scenario === 'empty' ? [] : customers} go={go} />;
+
+      case 'quotes':
+        return (
+          <QuotationsPage
+            customers={scenario === 'empty' ? [] : customers}
+            quotes={scenario === 'empty' ? [] : quotes}
+            go={go}
+          />
+        );
 
       case 'quote':
         return (
