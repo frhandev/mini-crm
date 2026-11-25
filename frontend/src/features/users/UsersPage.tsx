@@ -1,17 +1,16 @@
-import { useState } from 'react';
-import { Plus } from 'lucide-react';
+import { Empty } from '@/components/shared/Empty';
+import { Field } from '@/components/shared/Field';
+import { Header } from '@/components/shared/Header';
+import { Modal } from '@/components/shared/Modal';
+import { Panel } from '@/components/shared/Panel';
+import { SearchBox } from '@/components/shared/SearchBox';
+import { Table } from '@/components/shared/Table';
 import { Button } from '@/components/ui/button';
-import {
-  Header,
-  Panel,
-  SearchBox,
-  Table,
-  Empty,
-  Field,
-  PreviewNotice,
-  Modal,
-} from '@/components/shared/Elements';
-import { date, initials, type Member, type Activity } from '@/lib/model';
+import { PreviewNotice } from '@/preview/PreviewNotice';
+import type { Member } from '@/types/user';
+import { Plus } from 'lucide-react';
+import { useState } from 'react';
+
 export function UserList({ members }: { members: Member[] }) {
   const [search, setSearch] = useState(''),
     [role, setRole] = useState(''),
@@ -129,115 +128,6 @@ export function UserList({ members }: { members: Member[] }) {
           )}
         </Modal>
       )}
-    </>
-  );
-}
-export function Settings() {
-  const [done, setDone] = useState(false);
-  return (
-    <>
-      <Header
-        title="Şirket Ayarları"
-        description="Önerilen şirket ve uygulama ayarlarının önizlemesi."
-      />
-      <Panel title="Şirket bilgileri">
-        <form
-          className="form"
-          onSubmit={(e) => {
-            e.preventDefault();
-            setDone(true);
-          }}
-        >
-          <div className="fields">
-            <Field label="Şirket adı" defaultValue="Yakamoz Çözümleri" />
-            <Field label="İletişim e-postası" defaultValue="bilgi@example.com" type="email" />
-            <Field label="Uygulama dili" value="Türkçe" readOnly />
-            <Field label="Para birimi" value="Türk lirası (TRY)" readOnly />
-          </div>
-          <Button>Kaydet</Button>
-          {done && <PreviewNotice />}
-        </form>
-      </Panel>
-    </>
-  );
-}
-export function History({ activities }: { activities: Activity[] }) {
-  const [search, setSearch] = useState(''),
-    [user, setUser] = useState('');
-  const rows = activities.filter(
-    (a) =>
-      (!user || a.user === user) &&
-      (a.action + ' ' + a.description)
-        .toLocaleLowerCase('tr')
-        .includes(search.toLocaleLowerCase('tr')),
-  );
-  return (
-    <>
-      <Header
-        title="İşlem Geçmişi"
-        description="Çalışma alanındaki örnek kayıt hareketlerini inceleyin."
-      />
-      <Panel title="Son işlemler">
-        <div className="toolbar">
-          <SearchBox hint="İşlem veya açıklama ara" change={setSearch} value={search} />
-          <select
-            aria-label="Kullanıcı filtresi"
-            value={user}
-            onChange={(e) => setUser(e.target.value)}
-          >
-            <option value="">Tüm kullanıcılar</option>
-            {[...new Set(activities.map((a) => a.user))].map((u) => (
-              <option key={u}>{u}</option>
-            ))}
-          </select>
-        </div>
-        {rows.length ? (
-          <Table heads={['Kullanıcı', 'İşlem', 'Kayıt türü', 'Açıklama', 'Zaman']}>
-            {rows.map((a) => (
-              <tr key={a.id}>
-                <td>{a.user}</td>
-                <td>{a.action}</td>
-                <td>{a.entity}</td>
-                <td>{a.description}</td>
-                <td>
-                  {date(a.date)} ·{' '}
-                  {new Date(a.date).toLocaleTimeString('tr-TR', {
-                    timeZone: 'Europe/Istanbul',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                  })}
-                </td>
-              </tr>
-            ))}
-          </Table>
-        ) : (
-          <Empty />
-        )}
-      </Panel>
-    </>
-  );
-}
-export function Profile({ member }: { member: Member }) {
-  return (
-    <>
-      <Header title="Profilim" description="Çalışma alanındaki hesap bilgileriniz." />
-      <Panel
-        title="Hesap bilgileri"
-        action={<span className="avatar">{initials(member.name)}</span>}
-      >
-        <dl className="facts">
-          {[
-            ['Ad soyad', member.name],
-            ['E-posta', member.email],
-            ['Rol', member.admin ? 'Yönetici' : 'Satış çalışanı'],
-          ].map(([k, v]) => (
-            <div key={k}>
-              <dt>{k}</dt>
-              <dd>{v}</dd>
-            </div>
-          ))}
-        </dl>
-      </Panel>
     </>
   );
 }

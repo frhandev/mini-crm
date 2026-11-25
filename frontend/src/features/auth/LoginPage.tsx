@@ -1,8 +1,10 @@
-import { useState } from 'react';
-import { Eye, EyeOff, Shield, ArrowRight } from 'lucide-react';
-import { Brand, Field } from '@/components/shared/Elements';
+import { Brand } from '@/components/shared/Brand';
+import { Field } from '@/components/shared/Field';
 import { Button } from '@/components/ui/button';
-import { pageNames, type Page, type Scenario, type Go } from '@/lib/model';
+import type { Go, Scenario } from '@/preview/types';
+import { EyeOff, Eye, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+
 export function Login({ go, scenario }: { go: Go; scenario: Scenario }) {
   const [visible, setVisible] = useState(false);
   return (
@@ -14,6 +16,11 @@ export function Login({ go, scenario }: { go: Go; scenario: Scenario }) {
         <form
           onSubmit={(e) => {
             e.preventDefault();
+
+            if (scenario === 'error' || scenario === 'invalid' || scenario === 'loading') {
+              return;
+            }
+
             go('dashboard');
           }}
         >
@@ -54,27 +61,5 @@ export function Login({ go, scenario }: { go: Go; scenario: Scenario }) {
         </form>
       </div>
     </main>
-  );
-}
-export function SystemPage({ page, go, retry }: { page: Page; go: Go; retry: () => void }) {
-  return (
-    <section className="system panel">
-      <Shield />
-      <small>{page === 'forbidden' ? '403' : page === 'missing' ? '404' : '500'}</small>
-      <h1>{pageNames[page]}</h1>
-      <p>
-        {page === 'forbidden'
-          ? 'Bu alanı görüntülemek için yönetici rolü gerekir.'
-          : page === 'missing'
-            ? 'Aradığınız sayfaya ulaşılamadı.'
-            : 'Veriler şu anda görüntülenemiyor.'}
-      </p>
-      <div className="actions">
-        {page === 'error' && <Button onClick={retry}>Tekrar dene</Button>}
-        <Button variant="outline" onClick={() => go('dashboard')}>
-          Genel bakışa dön
-        </Button>
-      </div>
-    </section>
   );
 }
