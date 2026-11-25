@@ -13,7 +13,7 @@
 
 /* Sidebar */
 
-aside {
+.shell > aside {
   position: sticky;
   top: 0;
   height: 100dvh;
@@ -52,7 +52,7 @@ aside {
   flex-shrink: 0;
 }
 
-aside nav,
+.shell > aside nav,
 .drawer nav {
   padding: 10px 12px;
 }
@@ -86,7 +86,7 @@ aside nav,
   color: var(--accent-foreground);
 }
 
-aside nav h2,
+.shell > aside nav h2,
 .drawer nav h2 {
   font-size: 10px;
   letter-spacing: 0.11em;
@@ -120,25 +120,25 @@ aside nav h2,
 
 /* Collapsed sidebar */
 
-.collapsed aside .brand {
+.shell.collapsed > aside .brand {
   font-size: 0;
 }
 
-.collapsed aside .brand-area {
+.shell.collapsed > aside .brand-area {
   padding: 0 18px;
 }
 
-.collapsed aside .nav-item span,
-.collapsed aside .account button > span:nth-child(2),
-.collapsed aside .account button + button {
+.shell.collapsed > aside .nav-item span,
+.shell.collapsed > aside .account button > span:nth-child(2),
+.shell.collapsed > aside .account button + button {
   display: none;
 }
 
-.collapsed aside nav h2 {
+.shell.collapsed > aside nav h2 {
   font-size: 0;
 }
 
-.collapsed aside .account {
+.shell.collapsed > aside .account {
   justify-content: center;
 }
 
@@ -224,7 +224,7 @@ aside nav h2,
     grid-template-columns: minmax(0, 1fr);
   }
 
-  aside,
+  .shell > aside,
   .desktop-toggle {
     display: none;
   }

@@ -1,8 +1,14 @@
 import type { ReactNode } from 'react';
 
-export function Table({ heads, children }: { heads: string[]; children: ReactNode }) {
+type TableProps = {
+  heads: string[];
+  children: ReactNode;
+  label?: string;
+};
+
+export function Table({ heads, children, label = 'Tablo' }: TableProps) {
   return (
-    <div className="table-scroll" tabIndex={0} aria-label="Tablo">
+    <div className="table-scroll" role="region" tabIndex={0} aria-label={label}>
       <table>
         <thead>
           <tr>
@@ -13,6 +19,7 @@ export function Table({ heads, children }: { heads: string[]; children: ReactNod
             ))}
           </tr>
         </thead>
+
         <tbody>{children}</tbody>
       </table>
     </div>

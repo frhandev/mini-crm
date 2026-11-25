@@ -32,7 +32,7 @@ small {
   display: block;
 }
 
-h1 {
+:where(.page-head, .login, .system) h1 {
   font-size: 30px;
   font-weight: 700;
   line-height: 1.18;
@@ -44,7 +44,7 @@ h2 {
   letter-spacing: -0.02em;
 }
 
-select {
+:where(.toolbar, .field, .panel-head) select {
   border: 1px solid var(--input);
   border-radius: 6px;
   background: var(--card);
@@ -371,7 +371,7 @@ select {
   overflow: auto;
 }
 
-table {
+:where(.table-scroll) table {
   border-collapse: collapse;
   width: 100%;
   text-align: left;
@@ -379,24 +379,24 @@ table {
   white-space: nowrap;
 }
 
-th,
-td {
+:where(.table-scroll) th,
+:where(.table-scroll) td {
   padding: 13px 18px;
   border-bottom: 1px solid var(--border);
 }
 
-th {
+:where(.table-scroll) th {
   font-size: 12px;
   color: var(--muted-foreground);
   background: var(--background);
   font-weight: 550;
 }
 
-tr:last-child td {
+:where(.table-scroll) tr:last-child td {
   border-bottom: 0;
 }
 
-td.numeric {
+:where(.table-scroll) td.numeric {
   font-weight: 550;
   font-variant-numeric: tabular-nums;
 }
@@ -816,11 +816,16 @@ td.numeric {
   }
 
   .item-row {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .item-row > .field:first-child {
-    grid-column: 1/-1;
+    grid-column: 1 / -1;
+  }
+
+  .item-row > strong {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   .activity-feed li {
